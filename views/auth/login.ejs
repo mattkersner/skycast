@@ -1,1 +1,25 @@
-login.ejs
+<% include ../partials/head.ejs %>
+  <body>
+    <% include ../partials/header.ejs %>
+    <main style="background-image: none">
+      <div class="container" style="margin-top: 50px">
+        <form action="/auth/login" method="post">
+          <div class="input-field">
+            <input type="text" id="username" name="username"/>
+            <label class="active" for="username" style="font-size: 1.5em">Username:</label>
+          </div>
+          <div class="input-field" style="margin-top: 30px">
+            <input type="password" id="password" name="password"/>
+            <label class="active" for="password" style="font-size: 1.5em;">Password:</label>
+          </div>
+          <div>
+            <button class="btn waves-effect waves-light black" type="submit" name="action">Submit
+            <i class="material-icons right">send</i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </main>
+    <% include ../partials/jsdefaults.ejs %>
+  </body>
+</html>

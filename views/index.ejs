@@ -1,11 +1,36 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
+<% include partials/head.ejs %>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <% include partials/header.ejs %>
+    <div class="container">
+    <h1 class="center"><%= title %></h1>
+    <p class="center"><a href="https://darksky.net/poweredby/">Powered By Dark Sky</a></p>
+    <form action="/weather" method="get">
+    <input type="text" name="address" placeholder="address" />
+    <div class="center">
+    <button type="submit" class="waves-effect waves-light btn">Submit
+    <i class="material-icons right">cloud</i>
+    </button>
+    </div>
+    </form>
+    </div>
+    <% if (lat !== "undefined") { %>
+    <div class="container center" style="margin-top: 50px">
+        <div class="col s12 m6">
+          <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+              <span class="card-title"><%= city %>, <%= state %></span>
+              <p>Temp: <%= Math.floor(weather.currently.temperature) %>&deg;<br/>
+                <canvas id="<%= weather.currently.icon %>" width="128" height="128"></canvas><br/>
+                Currently: <%= weather.currently.summary %><br/>
+                Forecast: <%= weather.hourly.summary %>
+              </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% } %>
+     <% include partials/skycons.ejs %>
   </body>
 </html>
