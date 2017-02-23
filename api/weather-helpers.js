@@ -11,8 +11,8 @@ let getGeoData = (req, res, next) => {
     res.locals.lon = response.data.location.lng;
     return next();
   }).catch((err) => {
-    res.locals.lat = "40.7410986";
-    res.locals.lon = "-73.9888682";
+    res.locals.lat = 40.7410986;
+    res.locals.lon = -73.9888682;
     console.log(err);
   })
 }
