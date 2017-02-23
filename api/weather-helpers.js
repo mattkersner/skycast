@@ -11,7 +11,6 @@ let getGeoData = (req, res, next) => {
     return next();
   }).catch((err) => {
     console.log(err);
-    return next();
   })
 }
 
@@ -23,6 +22,7 @@ let fetchWeatherDataWithLat = (req, res, next) => {
     return next();
   }).catch((err) => {
     console.log(err);
+    return next();
   })
 }
 
@@ -36,6 +36,7 @@ let fetchWeatherDataWithAddress = (req, res, next) => {
       return next();
     }).catch((err) => {
       console.error(err);
+      return next();
     });
 }
 
@@ -48,7 +49,9 @@ let fetchWeatherDataWithZip = (req, res, next) => {
       res.locals.lon = response.data.results[0].geometry.location.lng;
       return next();
     })
-    .catch((err) => { console.error(err); });
+    .catch((err) => {
+      console.error(err);
+    });
   }
 
 let getDarkskyData = (req, res, next) => {
