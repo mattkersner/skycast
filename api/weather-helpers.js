@@ -11,6 +11,7 @@ let getGeoData = (req, res, next) => {
     return next();
   }).catch((err) => {
     console.log(err);
+    return next();
   })
 }
 
