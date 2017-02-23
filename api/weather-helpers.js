@@ -7,10 +7,8 @@ let getGeoData = (req, res, next) => {
   axios.post(`https://www.googleapis.com/geolocation/v1/geolocate?key=${process.env.GEO_KEY}`)
   .then((response) => {
     console.log(response);
-    // res.locals.lat = response.data.location.lat;
-    // res.locals.lon = response.data.location.lng;
-    res.locals.lat = "40.7410986";
-    res.locals.lon = "-73.9888682";
+    res.locals.lat = response.data.location.lat;
+    res.locals.lon = response.data.location.lng;
     return next();
   }).catch((err) => {
     res.locals.lat = "40.7410986";
@@ -22,7 +20,6 @@ let getGeoData = (req, res, next) => {
 let fetchWeatherDataWithLat = (req, res, next) => {
   axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${res.locals.lat},${res.locals.lon}&key=${process.env.GEO_KEY}`)
   .then((response) => {
-    console.log(response.data.results[0].formatted_address);
     res.locals.address = response.data.results[0].formatted_address;
     return next();
   }).catch((err) => {
@@ -60,7 +57,6 @@ let fetchWeatherDataWithZip = (req, res, next) => {
 let getDarkskyData = (req, res, next) => {
   axios.get(`https://api.darksky.net/forecast/${process.env.DARK_KEY}/${res.locals.lat},${res.locals.lon}`)
   .then((response) => {
-    console.log(response.data.daily.data);
     res.locals.weather = response.data
     res.locals.daily = response.data.daily.data;
     let dailyDays = [];
