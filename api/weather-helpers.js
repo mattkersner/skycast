@@ -35,7 +35,6 @@ let fetchWeatherDataWithAddress = (req, res, next) => {
       return next();
     }).catch((err) => {
       console.error(err);
-      return next();
     });
 }
 
