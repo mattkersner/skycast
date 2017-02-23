@@ -4,12 +4,15 @@ const moment = require('moment');
 require('dotenv').config();
 
 let getGeoData = (req, res, next) => {
-  axios.post('https://www.googleapis.com/geolocation/v1/geolocate?key=' + `${process.env.GEO_KEY}`)
+  axios.post(`https://www.googleapis.com/geolocation/v1/geolocate?key=${process.env.GEO_KEY}`)
   .then((response) => {
+    console.log(response);
     res.locals.lat = response.data.location.lat;
     res.locals.lon = response.data.location.lng;
     return next();
   }).catch((err) => {
+    res.locals.lat = "40.7410986";
+    res.locals.lon = "-73.9888682";
     console.log(err);
   })
 }
