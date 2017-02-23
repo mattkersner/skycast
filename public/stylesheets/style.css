@@ -1,2 +1,12 @@
+.flexlist {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap; }
+
+.btn {
+  background-color: black; }
+  .btn:hover {
+    background-color: grey; }
 
 /*# sourceMappingURL=style.css.map */

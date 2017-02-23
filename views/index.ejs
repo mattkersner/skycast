@@ -15,22 +15,79 @@
     </div>
     </form>
     </div>
-    <% if (lat !== "undefined") { %>
-    <div class="container center" style="margin-top: 50px">
-        <div class="col s12 m6">
+    <div class="flexlist row">
+    <div class="center container col m6 l6" style="margin-top: 50px">
           <div class="card blue-grey darken-1">
             <div class="card-content white-text">
               <span class="card-title"><%= city %>, <%= state %></span>
               <p>Temp: <%= Math.floor(weather.currently.temperature) %>&deg;<br/>
                 <canvas id="<%= weather.currently.icon %>" width="128" height="128"></canvas><br/>
                 Currently: <%= weather.currently.summary %><br/>
-                Forecast: <%= weather.hourly.summary %>
+                Forecast: <%= weather.hourly.summary %><br />
+                Weekly Forecast: <%= summary %>
               </p>
+              <form action="favorites" method="POST">
+              <input type="text" style="display: none;" value="<%= city %>" name="city">
+              <button class="waves-effect waves-light btn" type="submit" name="action" style="margin-top: 10px;">
+              Favorite
+              </button>
           </div>
         </div>
-      </div>
     </div>
-    <% } %>
+    <div class="container col m6 l6" style="margin-top: 50px">
+      <ul class="center collapsible" data-collapsible="accordion">
+        <li>
+          <div class="collapsible-header"><i class="material-icons">filter_drama</i>
+          <%= dailyDays[0] %></div>
+          <div class="collapsible-body"><span>Temp Min: <%= Math.floor(daily[0].temperatureMin) %>&deg;<br />
+            Temp Max: <%= Math.floor(daily[0].temperatureMax) %>&deg;<br />
+            Currently: <%= daily[0].summary %><br/></span></div>
+        </li>
+        <li>
+          <div class="collapsible-header"><i class="material-icons">filter_drama</i>
+          <%= dailyDays[1] %></div>
+          <div class="collapsible-body"><span>Temp Min: <%= Math.floor(daily[1].temperatureMin) %>&deg;<br />
+            Temp Max: <%= Math.floor(daily[1].temperatureMax) %>&deg;<br />
+            Currently: <%= daily[1].summary %><br/></span></div>
+        </li>
+        <li>
+          <div class="collapsible-header"><i class="material-icons">filter_drama</i>
+          <%= dailyDays[2] %></div>
+          <div class="collapsible-body"><span>Temp Min: <%= Math.floor(daily[2].temperatureMin) %>&deg;<br />
+            Temp Max: <%= Math.floor(daily[2].temperatureMax) %>&deg;<br />
+            Currently: <%= daily[2].summary %><br/></span></div>
+        </li>
+        <li>
+          <div class="collapsible-header"><i class="material-icons">filter_drama</i>
+          <%= dailyDays[3] %></div>
+          <div class="collapsible-body"><span>Temp Min: <%= Math.floor(daily[3].temperatureMin) %>&deg;<br />
+            Temp Max: <%= Math.floor(daily[3].temperatureMax) %>&deg;<br />
+            Currently: <%= daily[3].summary %><br/></span></div>
+        </li>
+        <li>
+          <div class="collapsible-header"><i class="material-icons">filter_drama</i>
+          <%= dailyDays[4] %></div>
+          <div class="collapsible-body"><span>Temp Min: <%= Math.floor(daily[4].temperatureMin) %>&deg;<br />
+            Temp Max: <%= Math.floor(daily[4].temperatureMax) %>&deg;<br />
+            Currently: <%= daily[4].summary %><br/></span></div>
+        </li>
+        <li>
+          <div class="collapsible-header"><i class="material-icons">filter_drama</i>
+          <%= dailyDays[5] %></div>
+          <div class="collapsible-body"><span>Temp Min: <%= Math.floor(daily[5].temperatureMin) %>&deg;<br />
+            Temp Max: <%= Math.floor(daily[5].temperatureMax) %>&deg;<br />
+            Currently: <%= daily[5].summary %><br/></span></div>
+        </li>
+        <li>
+          <div class="collapsible-header"><i class="material-icons">filter_drama</i>
+          <%= dailyDays[6] %></div>
+          <div class="collapsible-body"><span>Temp Min: <%= Math.floor(daily[6].temperatureMin) %>&deg;<br />
+            Temp Max: <%= Math.floor(daily[6].temperatureMax) %>&deg;<br />
+            Currently: <%= daily[6].summary %><br/></span></div>
+        </li>
+      </ul>
+    </div>
+    </div>
      <% include partials/skycons.ejs %>
      <% include partials/jsdefaults.ejs %>
   </body>

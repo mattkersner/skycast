@@ -1,1 +1,13 @@
+.flexlist {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
 
+.btn {
+  background-color: black;
+  &:hover {
+    background-color: grey;
+  }
+}
