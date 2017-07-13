@@ -21,7 +21,8 @@ function createUser(req, res) {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     email: req.body.email,
-    dob: req.body.dob
+    dob: req.body.dob,
+    address: req.body.address
   });
 }
 
